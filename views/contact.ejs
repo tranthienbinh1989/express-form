@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Node.js contact form example</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div>
+        <h2>Contact form</h2>
+        <form action='' method='POST'>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <% if (typeof errors !== 'undefined') { %>
+                <div class='error'>
+                    <ul>
+                        <% errors.forEach(function(error){ %>
+                            <li><%= error.msg %></li>
+                        <% });  %>
+                    </ul>
+                </div>
+            <% } %>
+            <div>Full name:
+                <input type='text' name='fname' />
+            </div>
+            <div>Type:
+                <select name='type'>
+                    <option value='suggestion'>Suggestion</option>
+                    <option value='complaint'>Complaint</option>
+                </select>
+            </div>
+            <div>Message:
+                <textarea name='message' rows=10 cols=20></textarea>
+            </div>
+            <input type='submit' name='submit'/>
+        </form>
+    </div>
+  </body>
+</html>
